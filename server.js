@@ -32,6 +32,8 @@ router.get('/', (req, res) => {
     res.send('Hola de nuevo desde mongo')
 });
 
+server.set("secretKey", "nodeRestApi"); 
+
 server.use('/', router);
 server.use('/user', userRoutes);
 
@@ -46,6 +48,3 @@ server.use('*', (req, res, next) => {
 server.listen(PORT, () => {
     console.log(`Mi super servidor está corriendo en http://localhost:${PORT}`)
 });
-
-
-///hasta acá 
