@@ -2,11 +2,13 @@ import { User } from "../models/User.js";
 import express from "express";
 import jwt from "jsonwebtoken";
 import bcrypt from 'bcrypt';
+import { isAuth } from "../authentication/jwt.js";
 
 
 const userRoutes = express.Router();
 
-userRoutes.get('/', async (req, res) => {
+userRoutes.get('/', [isAuth], async (req, res) => {
+
 
     // const { email } = req.user
 
@@ -95,6 +97,20 @@ userRoutes.post('/login', async (req, res, next) => {
 
     } catch (error) {
         return next(error)
+    }
+})
+
+//logOut
+userRoutes.post('/logout', async (req, res, next) => {
+    try {
+        req.authority = null;
+        return res.json({
+            status: 200,
+            message: 'logged out',
+            token: null
+        })
+    } catch (error) {
+        next(error)
     }
 })
 
