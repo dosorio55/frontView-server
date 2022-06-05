@@ -32,10 +32,22 @@ router.get('/', (req, res) => {
     res.send('Hola de nuevo desde mongo')
 });
 
-server.set("secretKey", "nodeRestApi"); 
+server.set("secretKey", "nodeRestApi");
 
 server.use('/', router);
 server.use('/user', userRoutes);
+
+//control de errores
+server.use('*', (req, res, next) => {
+    const error = new Error('Route not found');
+    error.status = 404;
+    next(error);
+});
+
+
+server.use((err, req, res, next) => {
+    return res.status(err.status || 500).json(err.message || 'Unexpected error');
+});
 
 
 //control de errores

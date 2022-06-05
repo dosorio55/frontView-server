@@ -66,18 +66,15 @@ userRoutes.post('/login', async (req, res, next) => {
 
         const { body } = req
 
-        const user = await User.findOne({ email: body.email })
+        const user = await User.findOne({ email: body.email });
+        const validPassword = await bcrypt.compare(body.password, user?.password ?? '');
 
-        if (!user) {
-            const error = new Error('The email and password combination ar incorrect')
-            return next(error)
-        }
-
-        const validPassword = await bcrypt.compare(body.password, user.password)
-
-        if (!validPassword) {
-            const error = new Error('The email and password combination ar incorrect')
-            return next(error)
+        if (!user || !validPassword) {
+            const error = {
+                status: 401,
+                message: 'the email and password combination are incorrect'
+            };
+            return next(error);
         }
 
         const token = jwt.sign(
