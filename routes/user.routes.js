@@ -9,9 +9,8 @@ const userRoutes = express.Router();
 
 userRoutes.get('/', [isAuth], async (req, res) => {
 
-
-    // const { email } = req.user
-
+    const { email } = req.authority
+    console.log(email) 
     try {
         //   if (email === "dosorioadmin@gmail.com") {
 

@@ -33,7 +33,6 @@ const isAuth = (req, res, next) => {
         email: token.email
     }
 
-    // console.log(authority)
     req.authority = authority;
     next();
 }
