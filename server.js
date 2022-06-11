@@ -2,6 +2,7 @@ import express from "express";
 import { connection } from "./database.js";
 import cors from "cors";
 import { userRoutes } from "./routes/user.routes.js";
+import { profileRoutes } from "./routes/profille.routes.js";
 
 connection();
 
@@ -36,6 +37,7 @@ server.set("secretKey", "nodeRestApi");
 
 server.use('/', router);
 server.use('/user', userRoutes);
+server.use('/profiles', profileRoutes);
 
 //control de errores
 server.use('*', (req, res, next) => {
