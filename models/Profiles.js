@@ -11,6 +11,7 @@ const profileSchema = new Schema(
         headline: {type: String, required: true},
         work: {type: String, required: true},
         email: {type: String, required: true},
+        website: {type: String, required: true},
         phone: {type: Number, required: true},
         address: {type: String, required: true},
         habilities: []

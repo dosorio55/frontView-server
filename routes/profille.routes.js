@@ -28,8 +28,9 @@ profileRoutes.post('/create', async (req, res, next) => {
             work: req.body.work,
             email: req.body.email,
             phone: req.body.phone,
+            website: req.body.website,
             address: req.body.address,
-            habilities: req.body.habilities,
+            habilities: req.body.habilities
         });
 
         const createdProfile = await newProfile.save();
