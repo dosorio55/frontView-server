@@ -6,7 +6,7 @@ import { profileRoutes } from "./routes/profille.routes.js";
 
 connection();
 
-const PORT = process.env.PORT;
+const PORT = 4000;
 const router = express.Router();
 const server = express();
 

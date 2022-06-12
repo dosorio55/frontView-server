@@ -2,7 +2,7 @@ import 'dotenv/config';
 
 import mongoose from 'mongoose';
 
-const DB_URL = process.env.DB_URL;
+const DB_URL = 'mongodb+srv://dosorio55:violoncello7@profile-project.vsvhxvv.mongodb.net/profile?retryWrites=true&w=majority';
 
 const connection = async () => {
     try {
