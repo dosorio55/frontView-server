@@ -7,6 +7,9 @@ import { isAuth } from "../authentication/jwt.js";
 
 const userRoutes = express.Router();
 
+
+
+//get all users
 userRoutes.get('/', [isAuth], async (req, res) => {
 
     const { email } = req.authority

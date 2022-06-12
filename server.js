@@ -6,7 +6,7 @@ import { profileRoutes } from "./routes/profille.routes.js";
 
 connection();
 
-const PORT = 4000;
+const PORT = process.env.PORT;
 const router = express.Router();
 const server = express();
 
@@ -62,5 +62,3 @@ server.use('*', (req, res, next) => {
 server.listen(PORT, () => {
     console.log(`Mi super servidor está corriendo en http://localhost:${PORT}`)
 });
-
-///hoping it works

@@ -1,9 +1,28 @@
 import express from "express";
-import { isAuth } from "../authentication/jwt.js";
+// import { isAuth } from "../authentication/jwt.js";
 import { Profile } from "../models/Profiles.js";
 
 
 const profileRoutes = express.Router()
+
+//get single profile
+
+profileRoutes.get('/:id', async (req, res) => {
+
+    const profileId = req.params.id
+
+
+    try {
+        
+        const personalProfile = await Profile.findById(profileId)
+        return res.status(200).json(personalProfile)
+
+    } catch (error) {
+        return next(error)
+    }
+
+})
+
 
 //get all profiles
 profileRoutes.get('/', async (req, res) => {
