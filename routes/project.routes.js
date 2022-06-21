@@ -4,12 +4,27 @@ import { Project } from "../models/Project.js";
 
 const projectRoutes = express.Router();
 
-projectRoutes.get('/', [isAuth], async (req, res, next) => {
+
+//get project by email
+projectRoutes.get('/personal', [isAuth], async (req, res, next) => {
 
     const { email } = req.authority
 
     try {
         const user = await Project.find( {email : email} )
+        return res.status(200).json(user)
+
+    } catch (error) {
+        return next(error)       
+    }
+});
+
+//get all projects
+projectRoutes.get('/', [isAuth], async (req, res, next) => {
+
+
+    try {
+        const user = await Project.find( )
         return res.status(200).json(user)
 
     } catch (error) {
