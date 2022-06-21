@@ -3,6 +3,7 @@ import { connection } from "./database.js";
 import cors from "cors";
 import { userRoutes } from "./routes/user.routes.js";
 import { profileRoutes } from "./routes/profille.routes.js";
+import { projectRoutes } from "./routes/project.routes.js";
 
 connection();
 
@@ -38,6 +39,7 @@ server.set("secretKey", "nodeRestApi");
 server.use('/', router);
 server.use('/user', userRoutes);
 server.use('/profiles', profileRoutes);
+server.use('/project', projectRoutes);
 
 //control de errores
 server.use('*', (req, res, next) => {
