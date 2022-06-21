@@ -57,7 +57,7 @@ projectRoutes.post('/', [isAuth], async (req, res, next) => {
         return res.json({
             status: 201,
             message: 'Registered successfully',
-            data: { id: savedProject._id }
+            data: newProject
         });
 
     } catch (error) {
