@@ -7,7 +7,25 @@ const profileRoutes = express.Router()
 
 //get single profile
 
-profileRoutes.get('/:id', [isAuth] ,  async (req, res) => {
+profileRoutes.get('/personal', [isAuth] ,  async (req, res, next) => {
+
+    const { email } = req.authority
+
+    try {
+        
+        const personalProfile = await Profile.find({email: email})
+        return res.status(200).json(personalProfile)
+
+    } catch (error) {
+        return next(error)
+    }
+
+})
+
+
+//get profile by id
+
+profileRoutes.get('/:id',  async (req, res) => {
 
     const profileId = req.params.id
 
