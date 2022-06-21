@@ -66,4 +66,18 @@ projectRoutes.post('/', [isAuth], async (req, res, next) => {
 
 })
 
+//delete project
+
+projectRoutes.delete('/:id', async (req, res, next) => {
+    try {
+        const { id } = req.params;
+
+        const deletedProject = await Project.findByIdAndDelete(id);
+        return res.status(200).json(deletedProject)
+
+    } catch (error) {
+        return next(error)
+    }
+});
+
 export { projectRoutes }
