@@ -114,6 +114,6 @@ userRoutes.post('/logout', async (req, res, next) => {
     } catch (error) {
         next(error)
     }
-})
+});
 
 export { userRoutes }
